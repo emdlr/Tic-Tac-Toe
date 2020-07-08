@@ -16,6 +16,7 @@ body {
     font-size: 100px;
     font-style: italic;
     color: white;
+    padding-top: 2%;
   }
   .grid-container {
   display: grid;

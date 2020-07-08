@@ -52,6 +52,7 @@ row2.appendChild(cel22);
 table.appendChild(row2);
 table.appendChild(row3);
 sec2.appendChild(table);
+
 resetBtn.onclick = function(){
     currentColor='RED';
     adminRooms = [];
@@ -81,32 +82,23 @@ function changeColor(e){
             };
             target.style.background = fColor;
             adminRooms.push(target);
-            if(adminRooms.length!==9)
-              reviewWinner(target);
-            else    
-             div5.innerText='No Winner😔';
+            reviewWinner(target,adminRooms.length);
         };
     };
 };
-function reviewWinner (t){
-    if(div1.style.background===div2.style.background&&div1.style.background===div3.style.background&&div1.style.background!=='white')
-        {console.log(`Color ${t.style.background} Wins`); gotWinner=true;}
-    else if (div1.style.background===div5.style.background&&div1.style.background===div9.style.background&&div1.style.background!=='white')
-        {console.log(`Color ${t.style.background} Wins`); gotWinner=true;}
-    else if (div1.style.background===div4.style.background&&div1.style.background===div7.style.background&&div1.style.background!=='white')
-        {console.log(`Color ${t.style.background} Wins`); gotWinner=true;}
-    else if (div2.style.background===div5.style.background&&div2.style.background===div8.style.background&&div2.style.background!=='white')
-        {console.log(`Color ${t.style.background} Wins`); gotWinner=true;}
-    else if (div3.style.background===div6.style.background&&div3.style.background===div9.style.background&&div3.style.background!=='white')
-        {console.log(`Color ${t.style.background} Wins`); gotWinner=true;}
-    else if (div3.style.background===div6.style.background&&div3.style.background===div9.style.background&&div3.style.background!=='white')
-        {console.log(`Color ${t.style.background} Wins`); gotWinner=true;}
-    else if (div3.style.background===div5.style.background&&div3.style.background===div7.style.background&&div3.style.background!=='white')
-        {console.log(`Color ${t.style.background} Wins`); gotWinner=true;}
-    else if (div4.style.background===div5.style.background&&div4.style.background===div6.style.background&&div4.style.background!=='white')
-        {console.log(`Color ${t.style.background} Wins`); gotWinner=true;}
-    else if (div7.style.background===div8.style.background&&div7.style.background===div9.style.background&&div7.style.background!=='white')
-        {console.log(`Color ${t.style.background} Wins`); gotWinner=true;}
+function reviewWinner (t, len){
+    if((div1.style.background===div2.style.background&&div1.style.background===div3.style.background&&div1.style.background!=='white')
+       || (div1.style.background===div5.style.background&&div1.style.background===div9.style.background&&div1.style.background!=='white')
+       || (div1.style.background===div4.style.background&&div1.style.background===div7.style.background&&div1.style.background!=='white')
+       || (div2.style.background===div5.style.background&&div2.style.background===div8.style.background&&div2.style.background!=='white')
+       || (div3.style.background===div6.style.background&&div3.style.background===div9.style.background&&div3.style.background!=='white')
+       || (div3.style.background===div6.style.background&&div3.style.background===div9.style.background&&div3.style.background!=='white')
+       || (div3.style.background===div5.style.background&&div3.style.background===div7.style.background&&div3.style.background!=='white')
+       || (div4.style.background===div5.style.background&&div4.style.background===div6.style.background&&div4.style.background!=='white')
+       || (div7.style.background===div8.style.background&&div7.style.background===div9.style.background&&div7.style.background!=='white'))
+         gotWinner=true;
+    else if(len === 9)
+         div5.innerText='No Winner😔';
 
     if(gotWinner){
         currentColor==='RED'?redScore++:blueScore++;
