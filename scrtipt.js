@@ -81,7 +81,10 @@ function changeColor(e){
             };
             target.style.background = fColor;
             adminRooms.push(target);
-            reviewWinner(target);
+            if(adminRooms.length!==9)
+              reviewWinner(target);
+            else    
+             div5.innerText='No Winner😔';
         };
     };
 };
